@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101a20">
+  <title>Midnight Munchies — Echo Dot Defense</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Midnight Munchies home"><span class="brand-mark">✦</span><span>MIDNIGHT <b>MUNCHIES</b></span></a>
+      <div class="top-right"><span class="status-pill"><i></i> KITCHEN SECURE? <b id="wave-label">WAVE 01</b></span><button class="icon-btn" id="sound-btn" aria-label="Toggle sound">♫</button><button class="icon-btn" id="pause-btn" aria-label="Pause game">Ⅱ</button></div>
+    </header>
+
+    <section class="game-layout">
+      <section class="arena-panel" aria-label="Game arena">
+        <div class="arena-heading"><div><div class="eyebrow">AFTER-HOURS SHIFT</div><h1>Echo Dot <em>Defense</em></h1></div><div class="wave-card"><span>WAVE</span><strong id="wave-number">01</strong><small id="wave-status">INCOMING...</small></div></div>
+        <div class="canvas-wrap">
+          <canvas id="game" aria-label="3D kitchen game. Tap a dot to aim, then fire."></canvas>
+          <div class="arena-overlay"><div class="stat-chip health-chip"><span class="stat-icon">♥</span><div><small>CHEF'S HEALTH</small><div class="health-track"><i id="health-fill"></i></div></div><b id="health-value">100</b></div><div class="stat-chip bonus-chip"><span class="stat-icon">◉</span><div><small>COIN MULTIPLIER</small><b id="bonus-value">1.00×</b></div></div><div class="controls-hint" id="hint">TAP A DOT TO AIM <span>•</span> HOLD FIRE TO SHOOT</div></div>
+          <button class="fire-control" id="fire-btn" aria-label="Hold to fire"><span>✦</span><b>FIRE</b><small>HOLD</small></button>
+          <div class="wave-banner" id="wave-banner"><span>✦</span><b>WAVE 01</b><small>HERE THEY COME!</small></div>
+          <div class="paused-overlay hidden" id="paused-overlay"><div><span>Ⅱ</span><h2>PAUSED</h2><p>The Echo Dots are waiting.</p><button class="primary-btn" id="resume-btn">BACK TO THE KITCHEN</button></div></div>
+          <div class="gameover-overlay hidden" id="gameover-overlay"><div class="over-icon">☠</div><div class="eyebrow">SHIFT OVER</div><h2>Kitchen<br><em>Overrun!</em></h2><p>You made it to wave <b id="final-wave">1</b> and sent <b id="final-kills">0</b> Echo Dots packing.</p><button class="primary-btn" id="restart-btn">TRY AGAIN <span>↗</span></button></div>
+        </div>
+        <div class="arena-footer"><div class="footer-tip"><span class="tip-icon">✧</span><span><b>KEEP YOUR COOL, CHEF.</b> The dots get quicker every wave.</span></div><div class="kill-counter"><span class="kill-dot"></span><span id="kill-count">0</span> DOTS DEFEATED</div></div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="wallet"><div><span class="eyebrow">YOUR TILL</span><div class="coin-total"><span class="coin-symbol">¢</span><strong id="coins">0</strong><span class="coin-label">COINS</span></div></div><div class="coin-burst">+1 <span>per dot</span></div></div>
+        <div class="shop-heading"><div><div class="eyebrow">THE TOOL SHED</div><h2>Kitchen <em>Upgrades</em></h2></div><span class="shop-sparkle">✦</span></div>
+        <p class="shop-copy">A little prep goes a long way. Spend your coins wisely, chef.</p>
+        <div class="upgrade-list">
+          <article class="upgrade-card" data-upgrade="dmg"><div class="upgrade-top"><div class="upgrade-icon dmg-icon">⚔</div><span class="level-tag">LVL <b id="dmg-level">0</b></span></div><h3>DMG <span>Sharpener</span></h3><p>More damage with every swing.</p><div class="upgrade-bottom"><div class="upgrade-stat"><small>DAMAGE</small><b id="dmg-stat">10 <i>→ 12</i></b></div><button class="buy-btn" data-buy="dmg"><span class="buy-cost">¢ <b id="dmg-cost">10</b></span><span class="buy-label">UPGRADE</span></button></div></article>
+          <article class="upgrade-card" data-upgrade="ehp"><div class="upgrade-top"><div class="upgrade-icon hp-icon">♥</div><span class="level-tag">LVL <b id="ehp-level">0</b></span></div><h3>EHP <span>Apron</span></h3><p>A sturdier apron for a longer shift.</p><div class="upgrade-bottom"><div class="upgrade-stat"><small>MAX HEALTH</small><b id="ehp-stat">100 <i>→ 120</i></b></div><button class="buy-btn" data-buy="ehp"><span class="buy-cost">¢ <b id="ehp-cost">10</b></span><span class="buy-label">UPGRADE</span></button></div></article>
+          <article class="upgrade-card bonus-upgrade" data-upgrade="bonus"><div class="upgrade-top"><div class="upgrade-icon coin-icon">¢</div><span class="level-tag">LVL <b id="bonus-level">0</b></span></div><h3>Coin Bonus <span>Tip Jar</span></h3><p>Earn a little extra for each dot.</p><div class="upgrade-bottom"><div class="upgrade-stat"><small>COIN MULTIPLIER</small><b id="bonus-stat">1.00× <i>→ 1.01×</i></b></div><button class="buy-btn" data-buy="bonus"><span class="buy-cost">¢ <b id="bonus-cost">50</b></span><span class="buy-label">UPGRADE</span></button></div></article>
+        </div>
+        <div class="side-note"><span>✦</span><p><b>PRO TIP</b> You earn <strong>+1 coin</strong> every time an Echo Dot is defeated. Grab the Coin Bonus early!</p></div>
+        <div class="shop-footer"><span>MADE WITH ♥ IN THE KITCHEN</span><span>V 1.0.4</span></div>
+      </aside>
+    </section>
+    <div class="toast" id="toast" aria-live="polite"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
